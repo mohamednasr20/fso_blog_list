@@ -6,6 +6,7 @@ const mongoose = require('mongoose');
 const logger = require('./utils/logger');
 const config = require('./utils/config');
 const blogsRouter = require('./controlles/blogControll');
+const usersRouter = require('./controlles/users');
 
 const mongoUrl = config.MONGODB_URI;
 mongoose
@@ -28,6 +29,7 @@ app.use(express.json());
 app.use(middleware.requestLogger);
 
 app.use('/api/blogs', blogsRouter);
+app.use('/api/users', usersRouter);
 
 app.use(middleware.unknownEndpoint);
 app.use(middleware.errorHandler);
